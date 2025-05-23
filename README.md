@@ -84,7 +84,7 @@ Data files are located in the `datasets/` directory, mainly including:
    ```
 8. Visualization and statistical analysis:
    - Clustering scripts will automatically output statistical tables and visual images.
-   - You can view some visualization results in the `实验结果图片/` (Experiment Results Images) directory.
+   - You can view some visualization results in the `result/` (Experiment Results Images) directory.
 
 ## Visualization Results
 - Supports various visualizations such as cluster distribution, publication statistics, Gantt charts, and t-SNE scatter plots.
@@ -93,12 +93,12 @@ Data files are located in the `datasets/` directory, mainly including:
 ### k-means Clustering Results
 - t-SNE Visualization (Figure_5):
 
-![k-means t-SNE Visualization](实验结果图片/k-means/Figure_5.png)
+![k-means t-SNE Visualization](result/k-means/Figure_5.png)
 
 ### GMM Clustering Results
 - t-SNE Visualization (Figure_5):
 
-![GMM t-SNE Visualization](实验结果图片/GMM/Figure_5.png)
+![GMM t-SNE Visualization](result/GMM/Figure_5.png)
 
 ## Notes
 - Please adjust file paths according to your environment.
