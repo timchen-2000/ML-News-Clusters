@@ -1,9 +1,9 @@
-# Machine Learning Text Clustering and Analysis Project
+# 机器学习文本聚类与分析项目
 
-## Project Introduction
-This project aims to perform cleaning, preprocessing, feature extraction, dimensionality reduction, and multiple clustering analyses on large-scale text data, with statistical and visual analysis of clustering results. It is suitable for topic discovery and publication distribution analysis of academic papers, news, and other text data.
+## 项目介绍
+本项目旨在对大规模文本数据进行清洗、预处理、特征提取、降维和多种聚类分析，并对聚类结果进行统计和可视化分析。适用于学术论文、新闻等文本数据的主题发现和发表分布分析。
 
-## Dependencies
+## 依赖
 - Python 3.7+
 - pandas
 - numpy
@@ -13,94 +13,94 @@ This project aims to perform cleaning, preprocessing, feature extraction, dimens
 - nltk
 - hdbscan
 
-> **Note:**
-> Please make sure to download the required nltk data packages in advance (such as punkt, averaged_perceptron_tagger, stopwords, words).
+> **注意：**
+> 请确保提前下载所需的 nltk 数据包（如 punkt, averaged_perceptron_tagger, stopwords, words）。
 
-Example installation:
+安装示例：
 ```bash
 pip install pandas numpy scikit-learn matplotlib tqdm nltk hdbscan
 ```
 
-## Dataset
-The dataset and processed data can be downloaded here: https://pan.quark.cn/s/8e66bc31bcf3 (Extraction code: DPVM)
-Data files are located in the `datasets/` directory, mainly including:
-- `Dataset.csv`: Original dataset
-- `Cleaned_Dataset.csv`: Data after removing rows with empty content
-- `Sampled_Dataset.csv`: 10% sampled data
-- `process_Sampled_Dataset.csv`: Preprocessed data
-- `Vocab1_Table.csv`: Original vocabulary table
-- `Filtered_Vocab_Table.csv`: Simplified vocabulary table
-- `TFIDF_Matrix.npz`: TF-IDF sparse matrix
-- `Reduced_TFIDF_Matrix.csv`: SVD-reduced TF-IDF matrix (100 dimensions)
-- `Clustered_dbscan_test_.csv`, `Clustered_GMM_100.csv`, `Clustered_kmeans_100.csv`, etc.: Results of different clustering methods
+## 数据集
+数据集和处理后的数据可在此下载：https://pan.quark.cn/s/8e66bc31bcf3（提取码：DPVM）
+数据文件位于 `datasets/` 目录下，主要包括：
+- `Dataset.csv`：原始数据集
+- `Cleaned_Dataset.csv`：删除空内容行后的数据
+- `Sampled_Dataset.csv`：10% 采样数据
+- `process_Sampled_Dataset.csv`：预处理后的数据
+- `Vocab1_Table.csv`：原始词汇表
+- `Filtered_Vocab_Table.csv`：简化后的词汇表
+- `TFIDF_Matrix.npz`：TF-IDF 稀疏矩阵
+- `Reduced_TFIDF_Matrix.csv`：SVD 降维后的 TF-IDF 矩阵（100 维）
+- `Clustered_dbscan_test_.csv`, `Clustered_GMM_100.csv`, `Clustered_kmeans_100.csv` 等：不同聚类方法的结果
 
-## Script Descriptions
-- `process.py`: Clean the original data and remove rows with empty content.
-- `sample.py`: Take a 10% sample from the cleaned dataset.
-- `preprocessing.py`: Preprocess text (lowercase, remove symbols, tokenize, stemming, remove proper nouns, etc.).
-- `simplify_vocabulary.py`: Tokenize, stem, remove proper nouns, count word frequency, and generate the original vocabulary table.
-- `keep_simply.py`: Filter the vocabulary using the nltk English word list, keeping only standard English words, and output a simplified vocabulary table.
-- `TfIdf.py`: Build the TF-IDF matrix using the simplified vocabulary and preprocessed text, and save it.
-- `diomention_check.py`: Check the distribution of the TF-IDF matrix and vocabulary, filter words by specific quantiles, and rebuild the TF-IDF matrix.
-- `dimension_reduction.py`: Perform SVD dimensionality reduction (100 dimensions) on the TF-IDF sparse matrix and merge article metadata.
-- `DBSCAN.py`: Cluster the reduced TF-IDF matrix using DBSCAN, and output statistics and visualizations.
-- `GMM.py`: Cluster using Gaussian Mixture Model (GMM), output publication and cluster statistics, and visualizations.
-- `kmens.py`: Cluster using KMeans, output publication and cluster statistics, and visualizations.
-- `HDBSCAN.py`: Cluster using HDBSCAN, output clustering results and 2D visualizations.
-- `test.py`: Auxiliary script for computing k-distance graphs to assist DBSCAN parameter selection.
+## 脚本说明
+- `process.py`：清洗原始数据，删除空内容行
+- `sample.py`：从清洗后的数据集中抽取 10% 样本
+- `preprocessing.py`：文本预处理（小写化、去除符号、分词、词干提取、去除专有名词等）
+- `simplify_vocabulary.py`：分词、词干提取、去除专有名词、统计词频，生成原始词汇表
+- `keep_simply.py`：使用 nltk 英语单词列表过滤词汇表，仅保留标准英语单词，输出简化词汇表
+- `TfIdf.py`：使用简化词汇表和预处理文本构建 TF-IDF 矩阵并保存
+- `diomention_check.py`：检查 TF-IDF 矩阵和词汇表的分布，按特定分位数过滤词语，重建 TF-IDF 矩阵
+- `dimension_reduction.py`：对 TF-IDF 稀疏矩阵进行 SVD 降维（100 维），并合并文章元数据
+- `DBSCAN.py`：使用 DBSCAN 对降维后的 TF-IDF 矩阵进行聚类，输出统计信息和可视化结果
+- `GMM.py`：使用高斯混合模型（GMM）进行聚类，输出发表和聚类统计信息及可视化结果
+- `kmens.py`：使用 KMeans 进行聚类，输出发表和聚类统计信息及可视化结果
+- `HDBSCAN.py`：使用 HDBSCAN 进行聚类，输出聚类结果和 2D 可视化
+- `test.py`：辅助脚本，用于计算 k 距离图以协助 DBSCAN 参数选择
 
-## Workflow
-1. Data cleaning:
+## 工作流程
+1. 数据清洗：
    ```bash
    python process.py
    ```
-2. Data sampling:
+2. 数据采样：
    ```bash
    python sample.py
    ```
-3. Text preprocessing:
+3. 文本预处理：
    ```bash
    python preprocessing.py
    ```
-4. Vocabulary generation and simplification:
+4. 词汇表生成和简化：
    ```bash
    python simplify_vocabulary.py
    python keep_simply.py
    ```
-5. Build TF-IDF matrix:
+5. 构建 TF-IDF 矩阵：
    ```bash
    python TfIdf.py
    ```
-6. Dimensionality reduction:
+6. 降维：
    ```bash
    python dimension_reduction.py
    ```
-7. Clustering and analysis (choose one or all):
+7. 聚类和分析（选择一个或全部）：
    ```bash
    python DBSCAN.py
    python GMM.py
    python kmens.py
    python HDBSCAN.py
    ```
-8. Visualization and statistical analysis:
-   - Clustering scripts will automatically output statistical tables and visual images.
-   - You can view some visualization results in the `result/` (Experiment Results Images) directory.
+8. 可视化和统计分析：
+   - 聚类脚本将自动输出统计表和可视化图像
+   - 可在 `result/`（实验结果图像）目录查看部分可视化结果
 
-## Visualization Results
-- Supports various visualizations such as cluster distribution, publication statistics, Gantt charts, and t-SNE scatter plots.
-- Visualization images will pop up or be saved automatically after running clustering scripts.
+## 可视化结果
+- 支持各种可视化，如聚类分布、发表统计、甘特图和 t-SNE 散点图
+- 运行聚类脚本后会自动弹出或保存可视化图像
 
-### k-means Clustering Results
-- t-SNE Visualization (Figure_5):
+### k-means 聚类结果
+- t-SNE 可视化（图 5）：
 
-![k-means t-SNE Visualization](result/k-means/Figure_5.png)
+![k-means t-SNE 可视化](result/k-means/Figure_5.png)
 
-### GMM Clustering Results
-- t-SNE Visualization (Figure_5):
+### GMM 聚类结果
+- t-SNE 可视化（图 5）：
 
-![GMM t-SNE Visualization](result/GMM/Figure_5.png)
+![GMM t-SNE 可视化](result/GMM/Figure_5.png)
 
-## Notes
-- Please adjust file paths according to your environment.
-- The dataset is large, and some scripts may take a long time to run.
-- For further customization or an updated README, please contact the maintainer.
+## 注意事项
+- 请根据实际环境调整文件路径
+- 数据集较大，部分脚本可能需要较长运行时间
+
